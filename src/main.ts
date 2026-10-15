@@ -10,7 +10,7 @@ app.innerHTML = `
   <div id="scene" class="scene"></div>
   <div class="vignette" aria-hidden="true"></div>
   <header class="header">
-    <a class="brand" href="/" aria-label="ホテル・アストラ ホーム"><span class="monogram">A<span>✦</span></span><span class="wordmark">HOTEL<span>A S T R A</span></span></a>
+    <a class="brand" href="${import.meta.env.BASE_URL}" aria-label="ホテル・アストラ ホーム"><span class="monogram">A<span>✦</span></span><span class="wordmark">HOTEL<span>A S T R A</span></span></a>
     <div class="header-center"><span class="live-dot"></span> THE LUGGAGE INCIDENT <span class="episode">/ 001</span></div>
     <button id="sound" class="sound-button" aria-pressed="false" aria-label="効果音をオンにする">♫ <span>SOUND OFF</span></button>
   </header>

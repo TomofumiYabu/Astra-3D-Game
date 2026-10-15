@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "check": "npm run build && npm test && npm run test:e2e",
+    "test:static": "playwright test --config playwright.static.config.ts",
+    "check": "npm run build && npm test && npm run test:e2e && npm run test:static",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

@@ -37,3 +37,7 @@ docs/           仕様・技術選定・Cloud手順・進捗・素材出典
 ```
 
 詳細は [仕様](docs/SPEC.md)、[技術構成](docs/ARCHITECTURE.md)、[開発環境](docs/DEVELOPMENT.md)、[進捗と残課題](docs/PROGRESS.md) を参照してください。
+
+## 静的サイト公開
+
+`dist/` をGitHub Pagesなどの静的ホスティングで配信できます。mainへのpushでビルド・テスト・公開するGitHub Actionsを用意しています。GitHub Pagesの初回設定と現在の公開状況の確認方法は [公開手順](docs/DEPLOYMENT.md) を参照してください。

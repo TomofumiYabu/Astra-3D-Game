@@ -35,9 +35,11 @@ cd /workspace/Astra-3D-Game
 npm run check
 ```
 
-順番に型チェック＋本番ビルド、ユニット／物理テスト、E2Eを実行。E2Eは自身で4173ポートのpreviewを起動・停止する。同ポートのサーバーを先に起動しない。
+順番に型チェック＋本番ビルド、ユニット／物理テスト、E2E、静的配信テストを実行。E2Eは自身で4173ポートのpreviewを起動・停止し、静的配信テストは4174ポートを使用する。これらのポートのサーバーを先に起動しない。
 
 個別には `npm run build`、`npm test`、`npm run test:e2e`。E2E前に最新のビルドが必要。Chromiumのパスが異なるCloudイメージでは `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` を指定できる。代替としてPlaywright管理のChromiumを導入できるが、この環境では追加ダウンロード不要。
+
+`npm run test:static` はGitHub Pagesと同じリポジトリパスで、通常の静的HTTP配信でも動作することを検証する。公開の詳細は [DEPLOYMENT.md](DEPLOYMENT.md) を参照する。
 
 書式は `npm run format` で整え、`npm run format:check` で確認する。書式確認はゲームの動作検証を代替しない。
 
