@@ -1,4 +1,4 @@
-name: Deploy Hotel Astra to GitHub Pages
+name: Deploy Throw Anything to GitHub Pages
 
 on:
   push:

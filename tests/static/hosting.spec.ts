@@ -23,7 +23,7 @@ test('a plain static host serves the game and navigation under a project path', 
     .evaluate((element) => (element as HTMLLinkElement).href);
   expect(new URL(iconUrl).pathname).toBe('/Astra-3D-Game/favicon.svg');
   expect((await request.get(iconUrl)).status()).toBe(200);
-  await page.getByRole('link', { name: 'ホテル・アストラ ホーム' }).click();
+  await page.getByRole('link', { name: 'それ、投げるんですか？ ホーム' }).click();
   await expect(page).toHaveURL(/\/Astra-3D-Game\/$/);
   await expect(page.locator('#app')).toHaveAttribute('data-state', 'ready');
   expect(failures).toEqual([]);

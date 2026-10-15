@@ -6,7 +6,7 @@
 
 **公開URL: https://tomofumiyabu.github.io/Astra-3D-Game/**
 
-2026-10-15（UTC）、[ワークフロー38751552143](https://github.com/TomofumiYabu/Astra-3D-Game/actions/runs/38751552143) でmainの `a73f1c5` のbuild・deployが成功。HTTP 200と、通常画質のChromiumによる起動・発射・得点表示・リトライを公開URLで確認した。
+ホテル試作の初回公開記録: 2026-10-15（UTC）、[ワークフロー38751552143](https://github.com/TomofumiYabu/Astra-3D-Game/actions/runs/38751552143) でmainの `a73f1c5` のbuild・deployが成功。HTTP 200と、通常画質のChromiumによる起動・発射・得点表示・リトライを公開URLで確認した。
 
 `.github/workflows/pages.yml` がmainへのpush時に、依存インストール → ビルド・物理・ブラウザー・静的配信テスト → Pagesへの配布を行う。公式Actionsは確認したコミットSHAに固定している。
 
@@ -14,7 +14,7 @@
 
 設定画面: https://github.com/TomofumiYabu/Astra-3D-Game/settings/pages
 
-mainへのpushで更新される。手動で再公開する場合はActionsの **Deploy Hotel Astra to GitHub Pages → Run workflow → main** で開始する。ドキュメントだけのcommitに `[skip ci]` を付けると、不要な再公開を省略できる。GitHub上の環境保護ルールやアカウントのPages利用条件がある場合は、それに従う。リポジトリの公開／非公開設定を勝手に変更しない。
+mainへのpushで更新される。手動で再公開する場合はActionsの **Deploy Throw Anything to GitHub Pages → Run workflow → main** で開始する。ドキュメントだけのcommitに `[skip ci]` を付けると、不要な再公開を省略できる。GitHub上の環境保護ルールやアカウントのPages利用条件がある場合は、それに従う。リポジトリの公開／非公開設定を勝手に変更しない。
 
 Actions画面: https://github.com/TomofumiYabu/Astra-3D-Game/actions/workflows/pages.yml
 
