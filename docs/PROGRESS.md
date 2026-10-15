@@ -1,6 +1,6 @@
 # 進捗と残課題
 
-最終更新: 2026-10-15（UTC）。[GitHub Pagesで公開済み](https://tomofumiyabu.github.io/Astra-3D-Game/)。CloudとGitHub Actionsで14件のテストが成功し、実際の公開URLでも通常画質の1ラウンドとリトライを確認。
+最終更新: 2026-10-16（日本時間）。[GitHub Pagesで公開済み](https://tomofumiyabu.github.io/Astra-3D-Game/)。CloudとGitHub Actionsで14件のテストが成功し、実際の公開URLでも通常画質の1ラウンドとリトライを確認。
 
 ## 完了した実装
 
@@ -41,6 +41,8 @@
 - スクリーンショットは `artifacts/` と `test-results/` にある生成物。公開サイトの確認結果は `artifacts/published-verification.json`、画面は `artifacts/published-lobby.png` と `artifacts/published-result.png`。Git管理対象には含めない。
 
 ## 次の段階
+
+ユーザーの依頼により、現案の改善と3つの代替案を [企画再検討](CONCEPT_REVIEW.md) に記録。3人のサブエージェントが別方向の企画を検討し、主担当は現行物理の45入力を比較した。第一候補は巨大ウェディングケーキの配膳、比較対象は現案の配送版。採用・仕様変更・新案の実装はまだ行っていない。外部の公式資料は接続制限で取得できず、人気・売上・SNS実績は未確認。人による企画評価も未実施。
 
 1. 遊びの評価: 衝突の気持ちよさ、初見の分かりやすさ、失敗時の面白さ。
 2. 演出: 衝突時スローモーション、カメラ切替、リプレイ、飛び散る小物。
