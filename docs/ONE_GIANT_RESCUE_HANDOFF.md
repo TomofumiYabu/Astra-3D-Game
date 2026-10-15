@@ -116,10 +116,10 @@ docs/ASSETS.md
 ## Cloud環境を別に構築する手順
 
 1. 新リポジトリが実在し、アクセスできることを確認する。ユーザーは新しいCodex Cloud環境に `TomofumiYabu/One-Giant-Rescue` のmainを選択する。利用可能なツールで独立環境の新規作成ができなければ、この選択操作はUI側で行う。
-2. 新環境のセッションで `$cloud-environment-onboarding:setup` を使い、実際のチェックアウト、AGENTS.md、Node・npm・Chromium、既存認証とネットワークを確認する。
+2. 新環境のセッションで `$cloud-environment-onboarding:setup` が利用できれば使用する。スキルが提供されない環境では本書の手順で進め、実際のチェックアウト、AGENTS.md、Node・npm・Chromium、既存認証とネットワークを確認する。
 3. 本書に従って仕様・基盤・最小ゲームを実装する。空のリポジトリやREADMEだけの状態で `npm ci` が実行可能と扱わない。package.jsonとロックファイルを作成してからインストールする。
 4. 実環境でビルド・物理テスト・ブラウザー操作・静的サブパス配信を実行する。成功・失敗・未検証を記録する。
-5. 新セッションに結び付く環境設定ドラフトへinstall_scriptとstart_skillを保存する。スクリプトを保存しただけで実行済みとしない。
+5. 新セッションに結び付く環境設定ドラフトへinstall_scriptとstart_skillを保存する。設定ツールが提供されない場合は、検証した全文を `docs/DEVELOPMENT.md` に残して環境設定UIへ引き継ぐ。スクリプトを保存しただけで実行済みとしない。
 6. 新環境の設定を確認・保存し、Cloud環境を公開して再利用できるようにする。新しいタスクでの復元確認は別に行う。ゲームの一般公開とは別の操作。
 
 この引継ぎを作成したセッションの環境設定ツールは、そのセッションに結び付く設定を更新するもの。新企画のためにAstraの環境を上書きしない。
@@ -193,4 +193,4 @@ Chromiumがない場合は、イメージの対応する導入方法かPlaywrigh
 
 新しいリポジトリとCloud環境を選択したセッションに、以下を渡せる。
 
-> このリポジトリのdocs/HANDOFF.mdとAGENTS.mdを読んでください。『猫を降ろすだけ。—巨大化は一回だけ』を、Astra-3D-Gameとは独立したPCブラウザーゲームとして開発します。$cloud-environment-onboarding:setupを使い、Cloud内だけで依存導入・実装・起動・自動テスト・修正まで進めてください。Node.js 24、TypeScript、Vite、Three.js、Rapierを使い、まず脚立一つで猫を救える一場面を作ってください。docsに仕様・技術構成・進捗・素材出典を残し、まとまりごとに検証してcommit・pushしてください。install_scriptとstart_skillはこの新環境の設定へ保存してください。実装、GitHubへの保存、Cloud環境の公開、ゲームの一般公開は状態を分けて報告してください。
+> このリポジトリのdocs/HANDOFF.mdとAGENTS.mdを読んでください。『猫を降ろすだけ。—巨大化は一回だけ』を、Astra-3D-Gameとは独立したPCブラウザーゲームとして開発します。利用可能なら$cloud-environment-onboarding:setupを使い、ない場合は引継ぎ書の手順に従って、Cloud内だけで依存導入・実装・起動・自動テスト・修正まで進めてください。Node.js 24、TypeScript、Vite、Three.js、Rapierを使い、まず脚立一つで猫を救える一場面を作ってください。docsに仕様・技術構成・進捗・素材出典を残し、まとまりごとに検証してcommit・pushしてください。install_scriptとstart_skillはこの新環境の設定へ保存してください。設定ツールがなければ検証済み手順を文書に残してUIへ引き継いでください。実装、GitHubへの保存、Cloud環境の公開、ゲームの一般公開は状態を分けて報告してください。
