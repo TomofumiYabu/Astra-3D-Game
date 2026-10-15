@@ -9,7 +9,7 @@
 - `←` `→` / `A` `D` またはスライダーで狙う。
 - `Space` または発射ボタンを長押しし、離して投げる。
 - `R` または結果画面の「もう一投」で再挑戦。
-- 3種類の隊列、結果画面からのリプレイとお題URLのコピー。
+- 3種類の隊列、結果画面からのリプレイ・結果画像の保存・お題URLのコピー。
 - 音と画質は右上で切り替え。軽量描画のURLは `?quality=low`。
 
 ## Codex Cloudで開発
@@ -38,6 +38,7 @@ src/game/physics.ts  固定ステップ・接触と連鎖・リプレイ記録
 src/game/models.ts   キャラクターの手続き生成
 src/game/scene.ts    会場・描画・カメラ・演出
 src/game/audio.ts    合成効果音
+src/game/result-card.ts 共有用PNGの生成・保存
 src/main.ts         入力・UI・リプレイ・共有
 src/style.css       レイアウトと表示状態
 tests/              物理・操作・静的配信の検証

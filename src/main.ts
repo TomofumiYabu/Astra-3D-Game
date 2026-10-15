@@ -2,6 +2,7 @@ import './style.css';
 import { ThrowPhysics, initPhysics, type Pose } from './game/physics';
 import { ThrowScene } from './game/scene';
 import { ThrowAudio } from './game/audio';
+import { saveResultCard } from './game/result-card';
 import { chargePower, scoreRound, MAX_ANGLE, verdict, type RoundStats } from './game/rules';
 import { STAGES, getStage, type Stage } from './game/stages';
 
@@ -49,7 +50,7 @@ app.innerHTML = `
     <div class="result-stats"><div><span>撃破</span><b id="result-knocked"></b></div><div><span>二次連鎖</span><b id="result-chain"></b></div><div><span>最長吹き飛び</span><b id="result-distance"></b></div></div>
     <p class="best-score">この隊列の最高記録 <b id="best-score"></b></p>
     <button id="retry" class="retry-button">もう一投、いきます。 <span>↗</span></button>
-    <div class="result-actions"><button id="replay">今の一投を見る</button><button id="share">結果とお題URLをコピー</button></div>
+    <div class="result-actions"><button id="replay">今の一投を見る</button><button id="save-image">結果を画像で保存</button><button id="share">結果とお題URLをコピー</button></div>
     <p id="share-status" role="status"></p><input id="share-fallback" readonly aria-label="結果とお題URL" hidden />
     <p class="retry-hint">R でもう一投 · ESC で戻る</p>
   </dialog>`;
@@ -270,6 +271,18 @@ async function start() {
     if (lowQuality) url.searchParams.delete('quality');
     else url.searchParams.set('quality', 'low');
     location.assign(url);
+  });
+  query('#save-image').addEventListener('click', async () => {
+    const button = query<HTMLButtonElement>('#save-image');
+    button.disabled = true;
+    try {
+      await saveResultCard(scene.snapshot(1280, 720), { ...finalStats }, stage);
+      query('#share-status').textContent = '結果画像の保存を開始しました。';
+    } catch {
+      query('#share-status').textContent = '画像を保存できませんでした。結果のコピーも使えます。';
+    } finally {
+      button.disabled = false;
+    }
   });
   query('#share').addEventListener('click', async () => {
     const url = new URL(import.meta.env.BASE_URL, location.href);

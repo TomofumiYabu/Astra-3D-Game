@@ -385,6 +385,33 @@ export class ThrowScene {
     this.renderer.render(this.scene, this.camera);
   }
 
+  snapshot(width: number, height: number): HTMLCanvasElement {
+    const size = this.renderer.getSize(new THREE.Vector2());
+    const ratio = this.renderer.getPixelRatio(),
+      aspect = this.camera.aspect;
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    try {
+      this.renderer.setPixelRatio(1);
+      this.renderer.setSize(width, height, false);
+      this.camera.aspect = width / height;
+      this.camera.updateProjectionMatrix();
+      this.renderer.render(this.scene, this.camera);
+      // Copy synchronously after render, so preserveDrawingBuffer is unnecessary.
+      const context = canvas.getContext('2d');
+      if (!context) throw new Error('Could not create the result image');
+      context.drawImage(this.renderer.domElement, 0, 0);
+      return canvas;
+    } finally {
+      this.renderer.setPixelRatio(ratio);
+      this.renderer.setSize(size.x, size.y, false);
+      this.camera.aspect = aspect;
+      this.camera.updateProjectionMatrix();
+      this.renderer.render(this.scene, this.camera);
+    }
+  }
+
   dispose() {
     this.resizeObserver.disconnect();
     const geometries = new Set<THREE.BufferGeometry>(),

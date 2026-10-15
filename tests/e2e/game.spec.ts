@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { readFile } from 'node:fs/promises';
 
 test('plays an actual throw, reports secondary impacts, replays it, shares and retries', async ({
   page,
@@ -42,6 +43,17 @@ test('plays an actual throw, reports secondary impacts, replays it, shares and r
   expect(score).not.toBe('0');
   await expect(page.getByTestId('result-score')).toHaveText(score);
   await page.screenshot({ path: testInfo.outputPath('result.png') });
+  const downloadReady = page.waitForEvent('download');
+  await page.getByRole('button', { name: '結果を画像で保存' }).click();
+  const download = await downloadReady;
+  expect(download.suggestedFilename()).toMatch(/^throw-anything-breakthrough-\d+\.png$/);
+  const cardPath = testInfo.outputPath('result-card.png');
+  await download.saveAs(cardPath);
+  const png = await readFile(cardPath);
+  expect(png.subarray(0, 8).toString('hex')).toBe('89504e470d0a1a0a');
+  expect(png.readUInt32BE(16)).toBe(1280);
+  expect(png.readUInt32BE(20)).toBe(720);
+  await expect(page.getByTestId('result-score')).toHaveText(score);
   await page.getByRole('button', { name: '結果とお題URLをコピー' }).click();
   await expect(page.getByRole('textbox', { name: '結果とお題URL' })).toBeVisible();
   await expect(page.getByRole('textbox', { name: '結果とお題URL' })).toHaveValue(

@@ -14,6 +14,7 @@ Node.js 24 / npm、TypeScript、Vite、Three.js / WebGL 2、Rapier 3D / WASM、V
 - `models.ts`: おじさんとサイボーグの形状。サイボーグの静的部品は材質ごとに結合し、描画呼び出しを減らす。
 - `scene.ts`: 環境反射、会場、照明、カメラ、パーティクル、キャラクターの描画上の姿勢。
 - `audio.ts`: ユーザー操作後のWeb Audio合成。衝突音の発音頻度を制限する。
+- `result-card.ts`: 3D描画のスナップショットへ結果を合成し、PNGをローカル保存する。Canvas・Blobのみを使い、外部サービスや追加依存は不要。
 - `main.ts`: 入力、UI、リプレイの再生、localStorage、明示的なコピー操作。
 
 ## 物理と連鎖
@@ -34,4 +35,4 @@ Node.js 24 / npm、TypeScript、Vite、Three.js / WebGL 2、Rapier 3D / WASM、V
 
 静的都市はInstancedMesh、キャラクターの部品は材質単位の結合、火花は144個のプールで再利用する。Three.jsのRoomEnvironmentで反射を作り、外部HDRIを不要にする。
 
-CloudのSwiftShaderは実WebGLコードの動作確認に使う。実GPUでのfpsやAAA品質を立証するものではない。Rapier compatのWASMを含むため、初回バンドルは約4.91MB（gzip約1.82MB）。サイズの最適化は残課題。
+CloudのSwiftShaderは実WebGLコードの動作確認に使う。実GPUでのfpsやAAA品質を立証するものではない。Rapier compatのWASMを含むため、初回バンドルは約4.92MB（gzip約1.82MB）。サイズの最適化は残課題。
