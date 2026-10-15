@@ -2,6 +2,8 @@
 
 高級ホテルのベル係になり、巨大なスーツケースを発射する3D物理コメディ。PCブラウザー向けの最初のプロトタイプです。
 
+**[ブラウザーで遊ぶ](https://tomofumiyabu.github.io/Astra-3D-Game/)** — インストール不要。Spaceを長押しして離すと発射します。
+
 ## Codex Cloudで開発
 
 ```sh
@@ -40,4 +42,4 @@ docs/           仕様・技術選定・Cloud手順・進捗・素材出典
 
 ## 静的サイト公開
 
-`dist/` をGitHub Pagesなどの静的ホスティングで配信できます。mainへのpushでビルド・テスト・公開するGitHub Actionsを用意しています。GitHub Pagesの初回設定と現在の公開状況の確認方法は [公開手順](docs/DEPLOYMENT.md) を参照してください。
+GitHub Pagesで公開済みです。`dist/` を配信し、mainへのpushでGitHub Actionsがビルド・テスト・公開します。公開状況と更新方法は [公開手順](docs/DEPLOYMENT.md) を参照してください。

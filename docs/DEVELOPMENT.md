@@ -45,7 +45,9 @@ npm run check
 
 `test-results/` に今回のスクリーンショット・失敗時トレース、`playwright-report/` にHTMLレポートを出力。これらと `dist/`、`node_modules/` は生成物でGit管理対象外。
 
-テストはCloud内のループバックHTTPを使う。ユーザー向けの公開リンクとは異なる。公開用ホスティングは今後の独立した作業。
+テストはCloud内のループバックHTTPを使う。公開済みゲームのURLと検証結果は [DEPLOYMENT.md](DEPLOYMENT.md) に記載している。
+
+公開URLをChromiumで検証するときは、Cloudが提供する `HTTPS_PROXY` をPlaywrightのproxy設定に渡す。この環境では `CODEX_PROXY_CERT` をシステムの信頼済みCAで検証し、ChromiumのNSS証明書DBにある `OpenAI-nebula-dns` と指紋が一致することを確認した。標準の実行では証明書エラーになったが、承認済みの実行権限を使ったブラウザー検証は成功した。具体的な再開手順は環境設定のstart_skillに保存している。TLS検証の無効化や `ignoreHTTPSErrors` は使用しない。
 
 ## 復元と公開
 
