@@ -90,7 +90,9 @@ export class HotelPhysics {
 
   step(deltaSeconds: number) {
     if (this.phase !== 'flying') return;
-    this.accumulator += Math.max(0, Math.min(deltaSeconds, 0.1));
+    // Keep 60 Hz collision steps even when software rendering produces only 2 fps.
+    // Bound a long stall to 30 steps so returning from a suspended tab cannot spiral.
+    this.accumulator += Math.max(0, Math.min(deltaSeconds, 0.5));
     while (this.accumulator >= FIXED_STEP && this.phase === 'flying') {
       this.world.step();
       this.accumulator -= FIXED_STEP;

@@ -32,6 +32,8 @@ Viteの `base: './'` を使用。ホームリンクとfaviconも配置先を基�
 
 ## 現在の制限
 
-CloudからのGit接続は動作するが、GitHub APIはプロキシのCONNECT段階で403となる。これはGitHub APIが返した権限エラーとは区別する。公開設定の自動変更やActions結果のAPI取得は未検証。
+Git接続、リポジトリ情報・Actions結果のAPI取得は成功。初期のネットワーク制限を解消した後、Pages APIのGETとPOSTは実際のGitHubから `403 Resource not accessible by integration` を返した。リポジトリの管理権限表示だけでは、連携アプリのPages権限があるとは限らない。
 
-環境設定ドラフトには `api.github.com` と `tomofumiyabu.github.io` の許可を追加した。ドラフトの保存だけでは現在のネットワークに適用されない。適用後にAPIの既存認証を再確認し、利用できれば設定と公開検証をCloudから続行する。秘密情報をチャットへ貼り付ける必要はない。
+このため初回のPages有効化は、所有者が上記のGitHub設定画面で行う必要がある。連携アプリの権限を変更する方法もあるが、秘密情報をチャットへ貼り付ける必要はない。リポジトリ情報の `has_pages` はfalse、公開予定URLはHTTP 404を確認済み。
+
+環境設定ドラフトには `api.github.com`、`tomofumiyabu.github.io`、Actionsログ配信先の `results-receiver.actions.githubusercontent.com` を追加した。ドラフト保存と実際のネットワーク適用を区別し、操作ごとに接続結果を確認する。

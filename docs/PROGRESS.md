@@ -18,9 +18,9 @@
 
 - 依存インストール: 成功。保存するinstall_scriptを実行し、`npm ci` で再インストールしてもpackage-lock.jsonのSHA-256が変わらないことを確認。
 - 型チェック／本番ビルド: 成功。生成JSは約4.89MB（gzip約1.81MB）。WASMを同梱するためViteの500KB警告あり。読み込みサイズの最適化は残課題。
-- ユニット／物理テスト: **8件成功、失敗0、スキップ0**。チャージ・得点・標的の安定性・実衝突・リセット・30/60fps間の物理再現性を検証。
+- ユニット／物理テスト: **10件成功、失敗0、スキップ0**。チャージ・得点・標的の安定性・実衝突・リセット・2/30/60fps間の物理再現性・長い停止の上限を検証。
 - Chromium E2E: **3件成功、失敗0、スキップ0**。実描画、角度調整、フルチャージ、衝突、結果、再挑戦、ポインター入力、キャンセル、音の切替、WebGL非対応時の案内を検証。
-- 静的配信テスト: **1件成功、失敗0、スキップ0**。Viteを使わないHTTPサーバーの `/Astra-3D-Game/` 配下で、JS・CSS・favicon・ホームへの再移動・WebGL起動を検証。変更後の `npm run check` は合計12件成功。
+- 静的配信テスト: **1件成功、失敗0、スキップ0**。Viteを使わないHTTPサーバーの `/Astra-3D-Game/` 配下で、JS・CSS・favicon・ホームへの再移動・WebGL起動を検証。変更後の `npm run check` は合計14件成功。
 - 最終E2Eの実ラウンド: 標的10/10、損害額576,000円。通常の成功ルートにJavaScript／consoleエラーなし。
 - 画面目視: 通常画質の1440×900と700×1000、低負荷画質のロビー・結果画面を確認。手前の壁による遮蔽をカメラ位置で修正。通常画質の起動時JavaScriptエラーなし。
 - 書式: `npm run format:check` 成功。
@@ -29,8 +29,10 @@
 ## 保存と起動の状態
 
 - 初回実装とcommit・pushルールを `2f22d44` としてorigin/mainへpush済み。リモートの同一SHAを確認。
-- GitHub Pages向け設定は別のcommitにまとめる。mainへのpushでテスト後に公開する。GitHub上のPages初回有効化とActionsの実行結果は未確認。
-- GitHub APIへの接続がプロキシのCONNECT段階で403となる。必要な `api.github.com` と `tomofumiyabu.github.io` を環境設定ドラフトに追加済み。適用後のアクセス・認証は再確認が必要。
+- GitHub Pages向け設定を `6e77748` としてmainへpush済み。mainへのpushでテスト後に公開する。
+- 初回GitHub Actionsではビルド・単体テストが成功したが、ソフトウェア描画の低fpsで結果画面のテストがタイムアウト。低画質の描画幅を最大800pxにし、物理の固定ステップを1フレーム最大0.5秒分まで進める修正を実装。Cloudの14件は成功、GitHub側は修正後の再検証待ち。
+- GitHub API・Actionsの読み取りは接続確認済み。ただしPages APIのGET／POSTは `403 Resource not accessible by integration`。初回有効化には所有者によるGitHub設定画面の操作が必要。公開予定URLのHTTP 404、`has_pages: false` を確認。
+- 必要なAPI・公開サイト・Actionsログの接続先を環境設定ドラフトに追加済み。
 - 開発サーバーは `npm run dev` で起動できる。スナップショット復元後は再起動する。
 - 環境を継続利用するには、環境設定で保存済みドラフトを確認・保存し、環境を公開する。新しいCloudタスクでの復元は別途確認が必要。
 - スクリーンショットは `artifacts/` と `test-results/` にある生成物。Git管理対象には含めない。

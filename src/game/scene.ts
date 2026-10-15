@@ -268,6 +268,7 @@ export class HotelScene {
 
   private resize() {
     const { width, height } = this.container.getBoundingClientRect();
+    if (this.lowQuality) this.renderer.setPixelRatio(Math.min(1, 800 / Math.max(width, 1)));
     this.renderer.setSize(width, height);
     this.camera.aspect = width / Math.max(height, 1);
     if (width < 800) {

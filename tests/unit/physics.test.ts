@@ -51,13 +51,20 @@ describe('real Rapier world', () => {
     expect(game.launch(0, 0.5)).toBe(true);
   });
 
-  it('produces the same physics at 30 and 60 render frames per second', () => {
+  it.each([30, 2])('produces the same physics at %i and 60 render frames per second', (fps) => {
     game.launch(0, 0.8);
     for (let i = 0; i < 120; i++) game.step(FIXED_STEP);
     const sixty = game.transforms;
     game.reset();
     game.launch(0, 0.8);
-    for (let i = 0; i < 60; i++) game.step(2 * FIXED_STEP);
+    for (let i = 0; i < 2 * fps; i++) game.step(1 / fps);
     expect(game.transforms).toEqual(sixty);
+  });
+
+  it('bounds a long render stall without fast-forwarding the whole round', () => {
+    game.launch(0, 1);
+    game.step(120);
+    expect(game.elapsed).toBeCloseTo(0.5);
+    expect(game.phase).toBe('flying');
   });
 });
