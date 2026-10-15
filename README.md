@@ -40,6 +40,8 @@ docs/           仕様・技術選定・Cloud手順・進捗・素材出典
 
 詳細は [仕様](docs/SPEC.md)、[技術構成](docs/ARCHITECTURE.md)、[開発環境](docs/DEVELOPMENT.md)、[進捗と残課題](docs/PROGRESS.md) を参照してください。
 
+次期企画は、ホテルに限定しない [投擲ゲームの改善方針](docs/THROWING_GAME_DIRECTION.md) を参照してください。別企画「巨大化で猫を救う」の [引継ぎ書](docs/ONE_GIANT_RESCUE_HANDOFF.md) も用意しています。
+
 ## 静的サイト公開
 
 GitHub Pagesで公開済みです。`dist/` を配信し、mainへのpushでGitHub Actionsがビルド・テスト・公開します。公開状況と更新方法は [公開手順](docs/DEPLOYMENT.md) を参照してください。
