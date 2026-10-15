@@ -1,6 +1,6 @@
 # 進捗と残課題
 
-最終更新: 2026-10-15（日本時間）。初回実装をGitHubへpush済み。GitHub Pages向けの静的配信設定を実装・Cloudで検証済み。一般公開の成功は未確認。
+最終更新: 2026-10-15（日本時間）。実装・公開設定・低速描画の修正をGitHubへpush済み。CloudとGitHub Actionsで14件のテストが成功。Pages初回有効化の権限が残る障害。
 
 ## 完了した実装
 
@@ -30,7 +30,8 @@
 
 - 初回実装とcommit・pushルールを `2f22d44` としてorigin/mainへpush済み。リモートの同一SHAを確認。
 - GitHub Pages向け設定を `6e77748` としてmainへpush済み。mainへのpushでテスト後に公開する。
-- 初回GitHub Actionsではビルド・単体テストが成功したが、ソフトウェア描画の低fpsで結果画面のテストがタイムアウト。低画質の描画幅を最大800pxにし、物理の固定ステップを1フレーム最大0.5秒分まで進める修正を実装。Cloudの14件は成功、GitHub側は修正後の再検証待ち。
+- 初回GitHub Actionsではビルド・単体テストが成功したが、ソフトウェア描画の低fpsで結果画面のテストがタイムアウト。低画質の描画幅を最大800pxにし、物理の固定ステップを1フレーム最大0.5秒分まで進める修正を `d69dbee` としてpush。Cloudの14件とGitHub Actionsの14件が成功。
+- [GitHub Actionsの検証結果](https://github.com/TomofumiYabu/Astra-3D-Game/actions/runs/38750385754): buildジョブ成功、公開用artifactアップロード成功。deployジョブはPages未有効化のためconfigure-pagesで404。ゲームのビルド／テスト失敗とは区別する。
 - GitHub API・Actionsの読み取りは接続確認済み。ただしPages APIのGET／POSTは `403 Resource not accessible by integration`。初回有効化には所有者によるGitHub設定画面の操作が必要。公開予定URLのHTTP 404、`has_pages: false` を確認。
 - 必要なAPI・公開サイト・Actionsログの接続先を環境設定ドラフトに追加済み。
 - 開発サーバーは `npm run dev` で起動できる。スナップショット復元後は再起動する。
@@ -49,6 +50,12 @@
 
 - 実GPUのfps、AAA相当の映像品質、SNS拡散効果。
 - Firefox / Safari、スマートフォン最適化、ゲームパッド、配信ソフトとの連携。
-- 外部への公開成功、GitHub Actions上での実行結果、別Cloudタスクでのスナップショット復元。
+- 外部への公開成功、別Cloudタスクでのスナップショット復元。
+
+## 公開のために残る操作
+
+1. リポジトリ所有者が [Settings → Pages](https://github.com/TomofumiYabu/Astra-3D-Game/settings/pages) でSourceをGitHub Actionsに設定する。
+2. [公開ワークフロー](https://github.com/TomofumiYabu/Astra-3D-Game/actions/workflows/pages.yml) をmainでRun workflowする（設定後にCodexへ続行を依頼してもよい）。
+3. deploy成功後に実際の公開URLをHTTP・ブラウザーで確認する。それまでは公開済みと扱わない。
 
 アプリは最初のプロトタイプ。上記の未完了項目を完成済みと扱わない。
