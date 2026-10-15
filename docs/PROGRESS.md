@@ -1,6 +1,6 @@
 # 進捗と残課題
 
-最終更新: 2026-10-16（日本時間）。新方向の試作 **『それ、投げるんですか？』v0.2** を実装。Cloudで19件の自動テストと通常画質の実操作を確認。公開先は [GitHub Pages](https://tomofumiyabu.github.io/Astra-3D-Game/)。ゲーム本体を `b334c9b` としてpushし、Actionsのテスト・公開が成功。追加した結果PNG保存の反映と公開URLでの最終操作確認は作業中。
+最終更新: 2026-10-16（日本時間）。新方向の試作 **『それ、投げるんですか？』v0.2** を [GitHub Pagesで公開済み](https://tomofumiyabu.github.io/Astra-3D-Game/)。ゲーム本体 `b334c9b` と結果PNG保存 `dbbd072` をcommit・mainへpush。CloudとGitHub Actionsの19件が成功し、公開URLでも通常画質で発射・連鎖・PNG保存・リプレイ・再挑戦・隊列変更を確認。
 
 ## 今回の実装
 
@@ -23,14 +23,15 @@
 - Chromium E2E: **4件成功**。実WebGL描画、長押し・発射・連鎖・結果・同じ得点のリプレイ・PNG実ダウンロードと寸法・コピー拒否時の代替・再挑戦、ポインターキャンセル、隊列URL、途中リセット、音、390×844と揺れ軽減、WebGL非対応時の案内。
 - 静的配信: **1件成功**。Viteを使わないHTTPサーバーの `/Astra-3D-Game/` 配下でJS・CSS・favicon・ホーム遷移・WebGL起動。
 - 通常画質の1440×900でも実操作し、**26,990点・16/18体・13連鎖・16.9m** を確認。JavaScript／consoleエラー0。準備・衝突・ネクタイ演出・結果画面を目視確認。
+- 公開URLの最終確認: 2026-10-15 17:16 UTC。HTTP 200、通常画質、**26,990点・16体撃破・13連鎖**。PNGは1280×720・940,655 bytesで実際に保存でき、同じ得点のリプレイ・再挑戦・隊列変更も成功。JavaScript／consoleエラー・通信失敗0。JS `index-CQO6fPxM.js` とCSS `index-C_al07Mb.css` が検証した本番ビルドと一致。提供されたプロキシと信頼済みCAを使い、TLS検証を維持。
 - 上記自動描画はCloudのChromium + SwiftShader。実GPUのfpsや映像品質を保証する計測ではない。
-- スクリーンショット等は `artifacts/` と `test-results/` に保存した生成物で、Git管理対象外。
+- スクリーンショット等は `artifacts/` と `test-results/` に保存した生成物で、Git管理対象外。公開検証は `artifacts/published-verification.json`、画面と保存画像は `published-arena.png`・`published-result.png`・`published-result-card.png`。
 
 ## 公開とCloud環境
 
 - ホテル版の初回公開: [Actions 38751552143](https://github.com/TomofumiYabu/Astra-3D-Game/actions/runs/38751552143)、`a73f1c5`。当時の公開URLで通常画質の1ラウンドとリトライを検証済み。
 - mainへのpushで `.github/workflows/pages.yml` が19件のテスト後に `dist/` を公開する。公開とCloud環境の保存は別作業。
-- ゲーム本体 `b334c9b` の [Actions 38774617062](https://github.com/TomofumiYabu/Astra-3D-Game/actions/runs/38774617062) がテスト・公開とも成功。結果PNG保存は別commitで反映し、公開URLで確認して更新する。
+- ゲーム本体 `b334c9b` の [Actions 38774617062](https://github.com/TomofumiYabu/Astra-3D-Game/actions/runs/38774617062)、結果PNG保存 `dbbd072` の [Actions 38775237728](https://github.com/TomofumiYabu/Astra-3D-Game/actions/runs/38775237728) ともに全テスト・公開が成功。最終公開物とCloudビルドの一致も確認済み。
 - Node.js 24 / npm 11 / Chromiumの環境。再構築は `npm ci`、一括確認は `npm run check`、書式確認は `npm run format:check`。
 - `install_script` / `start_skill` は環境設定ドラフトに保存済み。今回の変更に合わせた起動手順のドラフト保存も成功。環境設定の確認・保存と環境公開で次回利用に反映する。ドラフト保存は環境の公開や新タスクでの復元確認を意味しない。
 - GitHub API・Actionsログ・公開サイトへの必要な接続先をドラフトに登録済み。TLS検証は維持する。詳細は [開発手順](DEVELOPMENT.md)。

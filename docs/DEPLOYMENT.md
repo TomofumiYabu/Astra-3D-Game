@@ -6,6 +6,8 @@
 
 **公開URL: https://tomofumiyabu.github.io/Astra-3D-Game/**
 
+最新版の公開記録: 2026-10-15 17:16 UTC、[ワークフロー38775237728](https://github.com/TomofumiYabu/Astra-3D-Game/actions/runs/38775237728) が `dbbd072` の19件のテスト・deployを完了。公開サイトの通常画質で16体撃破・13連鎖・26,990点、PNG保存、同じ結果のリプレイ、再挑戦、隊列変更を検証した。JavaScript／consoleエラー・通信失敗0。詳細は [進捗](PROGRESS.md)。
+
 ホテル試作の初回公開記録: 2026-10-15（UTC）、[ワークフロー38751552143](https://github.com/TomofumiYabu/Astra-3D-Game/actions/runs/38751552143) でmainの `a73f1c5` のbuild・deployが成功。HTTP 200と、通常画質のChromiumによる起動・発射・得点表示・リトライを公開URLで確認した。
 
 `.github/workflows/pages.yml` がmainへのpush時に、依存インストール → ビルド・物理・ブラウザー・静的配信テスト → Pagesへの配布を行う。公式Actionsは確認したコミットSHAに固定している。
